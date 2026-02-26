@@ -1,0 +1,105 @@
+/* Base styles and typography */
+:root {
+    --bg-color: #fdfaf6; /* Warm, paper-like background */
+    --text-color: #2c2c2c;
+    --nav-bg: #eae3d9;
+    --accent-color: #8b3a3a;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column; /* Stacks nav on top for mobile */
+    min-height: 100vh;
+}
+
+/* Navigation Menu */
+#sidebar {
+    background-color: var(--nav-bg);
+    padding: 20px;
+    border-bottom: 2px solid #d4c8b8;
+}
+
+#sidebar h2 {
+    margin-top: 0;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allows links to wrap on small screens */
+    gap: 15px;
+}
+
+#sidebar a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+#sidebar a:hover {
+    background-color: #d4c8b8;
+    color: var(--accent-color);
+}
+
+/* Main Content Area */
+#content {
+    padding: 30px;
+    flex-grow: 1;
+}
+
+/* Hides sections that aren't currently active */
+.page {
+    display: none;
+}
+
+/* Shows the active section */
+.page.active {
+    display: block;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* The secret sauce for easy mobile reading */
+.reading-container {
+    max-width: 65ch; /* Keeps line lengths comfortable for the eye */
+    margin: 0 auto; /* Centers the reading block */
+    font-family: Georgia, 'Times New Roman', Times, serif; /* Serif fonts are best for long reading */
+    font-size: 1.15rem;
+    line-height: 1.8; /* Adds breathing room between lines */
+}
+
+.reading-container h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--accent-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Desktop Layout */
+@media (min-width: 768px) {
+    body {
+        flex-direction: row; /* Puts nav on the left for larger screens */
+    }
+    
+    #sidebar {
+        width: 250px;
+        border-bottom: none;
+        border-right: 2px solid #d4c8b8;
+        min-height: 100vh;
+    }
+
+    #sidebar ul {
+        flex-direction: column; /* Stacks links vertically on desktop */
+    }
+}
